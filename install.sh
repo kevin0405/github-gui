@@ -74,6 +74,7 @@ function gst() { command git status "\$@"; }
 function gd()  { command git diff "\$@"; }
 function gb()  { command git branch "\$@"; }
 function gbD() { command git branch -D "\$@"; }
+function gm()  { command git merge "\$@"; }
 FUNC
 )
 
@@ -90,6 +91,7 @@ compdef gst='git status'
 compdef gd='git diff'
 compdef gb='git branch'
 compdef gbD='git branch'
+compdef gm='git merge'
 COMP
 )
 
@@ -105,6 +107,7 @@ if type __git_complete &>/dev/null; then
   __git_complete gd  _git_diff
   __git_complete gb  _git_branch
   __git_complete gbD _git_branch
+  __git_complete gm  _git_merge
 fi
 COMP
 )
@@ -157,7 +160,7 @@ FISHFUNC
       success "Created ~/.config/fish/functions/ghelp.fish"
     fi
 
-    for alias_name in gcb ga gs gco gpl gps gst gd gb; do
+    for alias_name in gcb ga gs gco gpl gps gst gd gb gm; do
       if [ -f "$FISH_FUNCS/$alias_name.fish" ] && grep -q "github-gui" "$FISH_FUNCS/$alias_name.fish"; then
         warn "$alias_name.fish already configured — skipping"
       else
@@ -171,6 +174,7 @@ FISHFUNC
           gst) git_cmd="status" ;;
           gd)  git_cmd="diff" ;;
           gb)  git_cmd="branch" ;;
+          gm)  git_cmd="merge" ;;
         esac
         if [ "$alias_name" = "gcb" ]; then
           cat > "$FISH_FUNCS/gcb.fish" <<FISHFUNC
@@ -210,6 +214,7 @@ FISHFUNC
       [ga]="git add" [gs]="git switch" [gco]="git checkout"
       [gpl]="git pull" [gps]="git push" [gst]="git status" [gd]="git diff"
       [gb]="git branch" [gbD]="git branch"
+      [gm]="git merge"
     )
     for alias_name in "${!completion_map[@]}"; do
       cat > "$FISH_COMPLETIONS/$alias_name.fish" <<FISHCOMP
@@ -261,5 +266,6 @@ echo -e "  ${YELLOW}gst${RESET}         → git status"
 echo -e "  ${YELLOW}gd${RESET}          → git diff"
 echo -e "  ${YELLOW}gb${RESET}          → git branch"
 echo -e "  ${YELLOW}gbD${RESET}         → git branch -D"
+echo -e "  ${YELLOW}gm${RESET}          → git merge"
 echo -e "  ${YELLOW}ghelp${RESET}       → list all commands"
 echo ""

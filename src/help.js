@@ -16,6 +16,7 @@ function help() {
 
   console.log(chalk.yellow('  Shortcuts'));
   row('ga',   'git add');
+  row('gm',   'git merge');
   row('gb',   'git branch');
   row('gbD',  'git branch -D   (force delete)');
   row('gco',  'git checkout');

@@ -108,6 +108,7 @@ The following shorthand aliases are also installed:
 | `gps` | `git push` |
 | `gst` | `git status` |
 | `gd`  | `git diff` |
+| `gm`  | `git merge` |
 | `gb`  | `git branch` |
 | `gbD` | `git branch -D` |
 
