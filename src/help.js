@@ -11,7 +11,7 @@ function help() {
 
   console.log(chalk.yellow('  GUIs'));
   row('gcb',  'interactive branch creator');
-  row('gc',   'interactive commit + push');
+  row('gc',   'interactive commit (no push)');
   console.log('');
 
   console.log(chalk.yellow('  Shortcuts'));

@@ -51,19 +51,9 @@ async function commit() {
 
   try {
     execSync(`git commit -m ${JSON.stringify(commitMsg)}`, { stdio: 'inherit' });
-  } catch {
-    console.error(chalk.red('\n✗ Commit failed.'));
-    process.exit(1);
-  }
-
-  const branch = execSync('git rev-parse --abbrev-ref HEAD', { encoding: 'utf8' }).trim();
-  console.log(chalk.cyan(`\n🚀 Pushing to origin/${branch}...\n`));
-
-  try {
-    execSync(`git push origin ${branch}`, { stdio: 'inherit' });
     console.log(chalk.green('\n✅ Done!\n'));
   } catch {
-    console.error(chalk.red('\n✗ Push failed. You may need to set the upstream or check your connection.'));
+    console.error(chalk.red('\n✗ Commit failed.'));
     process.exit(1);
   }
 }

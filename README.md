@@ -17,7 +17,6 @@ A minimal terminal GUI for structured git branch and commit workflows. Prompts y
 2. Asks: commit type — `FEATURE`, `BUGFIX`, `HOTFIX`, `REVERT`, or `BUMP`
 3. Asks: commit message
 4. Commits with: `FEATURE: Add login page`
-5. Pushes to the current branch automatically
 
 ---
 
@@ -90,7 +89,9 @@ gc
 ? Commit message: Add login page
 
 ✅ Committing: "FEATURE: Add login page"
-🚀 Pushing to origin/feature/SMN-222/add-login-page
+```
+
+Then run `gps` to push.
 ```
 
 ### Git aliases
